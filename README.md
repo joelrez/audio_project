@@ -6,3 +6,33 @@ In this project, I am simulating recordings to better understand sound and signa
 * I want to understand how the sound coming from an object moving around in a space affects the audio recording. For this, I am attempting to apply the [inverse square law](https://en.wikipedia.org/wiki/Inverse-square_law) to an object moving in a 2D space where it is assumed we know the locations of the object and microphone, but we (I) don't know how the signal attenuates given the distance.
 
 ## Musical Notes
+To start, we must understand what musical notes even are, which in theory are essentially frequencies. The following formula is used to generate the waveform of the note.
+
+y(t) = Asin(2&pi;ft) where y(t) is the signal, t is time, and f is the frequency.
+
+For example take for instance a frequency of 2, we would have the following
+
+y(t) = 127sin(2&pi;(2t))
+
+This means that there are 2 cycles per second, i.e. the following figure will have exactly 2 cycles over the duration of 1 second.
+![image](https://github.com/joelrez/audio_project/assets/32008471/2ab2bfb9-1f9e-4a17-a699-88ede503999a)
+
+And for a note A4 or the A note in the 4th octave, we have a frequency of 440 (to find other note frequencies check [here](https://muted.io/note-frequencies/).) Below we can see it's not super easy to analyze this 1 second note since we're looking at the sound recording at a much higher frequency.
+![image](https://github.com/joelrez/audio_project/assets/32008471/bd2805a4-e671-48c5-9e9a-5dd4a7074696)
+
+One note (badum-tst), if you checked out the frequencies chart for each note, each octave is twice the previous octave. For example, if I want to change a note A4 to an AN<sup>th</sup> octave, then I would use the following to find the new frequency.
+
+f<sub>AN</sub> = f<sub>A4</sub>(2<sup>N-4</sup>)
+
+Let N = 2, i.e., A2. Then f<sub>A2</sub> = f<sub>A4</sub>(2<sup>2-4</sup>) = f<sub>A4(</sub>2<sup>-2</sup>) = f<sub>A4</sub>/4 As we'd expect.
+
+This lead me to think about the potential of creating a sort of algebra with musical notes.
+
+One such operation I used to generate /audio_files/jinglebells.wav is assembling these one second notes (which are like the wave forms presented above) into a block matrix, which would be the entire recording.
+
+```py 
+  data = (127*np.block([E, E, E, silence,
+                        E, E, E, silence,
+                        E, G, C, D, E, F, F, F, F, silence,
+                        F, E, E, E, E, G, G, F, D, C])).astype(np.int8)
+```
