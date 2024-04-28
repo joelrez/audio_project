@@ -30,7 +30,39 @@ This lead me to think about the potential of creating a sort of algebra with mus
 
 One such operation I used to generate /audio_files/jinglebells.wav is assembling these one second notes (which are like the wave forms presented above) into a block matrix, which would be the entire recording.
 
-```py 
+```py
+  num_channels    = 1                             # mono audio
+  sample_width    = 2                            # 8 bits(1 byte)/sample
+  sample_rate     = 44.1e3                        # 44.1k samples/second
+  frequency       = 233.08                          # 440 Hz
+  duration        = 20                            # play for this many seconds
+
+  n = round(sample_rate/frequency)
+  periods = round(frequency*duration)
+  t = np.linspace(0.0, 1, int(sample_rate))
+  
+  freqs = { 'C' : 261.63,
+            'C#' : 277.18,
+            'D' : 293.66,
+            'D#' : 311.13,
+            'E' : 329.63,
+            'F' : 349.23,
+            'F#' : 369.99,
+            'G' : 392,
+            'G#' : 415.3,
+            'A' : 440,
+            'A#' : 466.16,
+            'B' : 493.88
+          }
+
+  E = getNote('E4')
+  silence = 0*t
+  G = getNote('G4')
+  C = getNote('C4')
+  D = getNote('D4')
+  F = getNote('F4')
+  A = getNote('A4')
+  B = getNote('B4')
   data = (127*np.block([E, E, E, silence,
                         E, E, E, silence,
                         E, G, C, D, E, F, F, F, F, silence,
