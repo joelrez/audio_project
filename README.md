@@ -10,11 +10,12 @@ To start, we must understand what musical notes even are, which in theory are es
 
 y(t) = Asin(2&pi;ft) where y(t) is the signal, t is time, and f is the frequency.
 
-For example take for instance a frequency of 2, we would have the following
+Take for instance a frequency of 2, we would have the following
 
 y(t) = 127sin(2&pi;(2t))
 
 This means that there are 2 cycles per second, i.e. the following figure will have exactly 2 cycles over the duration of 1 second.
+
 ![image](https://github.com/joelrez/audio_project/assets/32008471/2ab2bfb9-1f9e-4a17-a699-88ede503999a)
 
 And for a note A4 or the A note in the 4th octave, we have a frequency of 440 (to find other note frequencies check [here](https://muted.io/note-frequencies/).) Below we can see it's not super easy to analyze this 1 second note since we're looking at the sound recording at a much higher frequency.
