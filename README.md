@@ -18,6 +18,7 @@ This means that there are 2 cycles per second, i.e. the following figure will ha
 ![image](https://github.com/joelrez/audio_project/assets/32008471/2ab2bfb9-1f9e-4a17-a699-88ede503999a)
 
 And for a note A4 or the A note in the 4th octave, we have a frequency of 440 (to find other note frequencies check [here](https://muted.io/note-frequencies/).) Below we can see it's not super easy to analyze this 1 second note since we're looking at the sound recording at a much higher frequency.
+
 ![image](https://github.com/joelrez/audio_project/assets/32008471/bd2805a4-e671-48c5-9e9a-5dd4a7074696)
 
 One note (badum-tst), if you checked out the frequencies chart for each note, each octave is twice the previous octave. For example, if I want to change a note A4 to an AN<sup>th</sup> octave, then I would use the following to find the new frequency.
