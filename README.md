@@ -56,6 +56,11 @@ One such operation I used to generate /audio_files/jinglebells.wav is assembling
             'B' : 493.88
           }
 
+  def getNote(note):
+    note_ = note[0:-1]
+    octave = int(note[-1])
+    return np.sin(2*t*np.pi*freqs[note_]*2**(octave - 4))
+
   E = getNote('E4')
   silence = 0*t
   G = getNote('G4')
